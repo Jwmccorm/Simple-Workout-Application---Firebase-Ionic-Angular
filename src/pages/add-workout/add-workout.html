@@ -1,0 +1,80 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>
+        Add Workout
+      </ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only on-click="goToAddExercise()">
+          <ion-icon name="add"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  <ion-content padding id="page11">
+      <h3 id="addWorkout-heading11" style="color:#000000;text-align:center;">
+          Workout Information
+        </h3>
+    <form id="addWorkout-form8">
+      <ion-item text-center class="item-content"><h4>Workout Name</h4></ion-item>
+      <ion-item id="addWorkout-input29">
+
+        <ion-input text-center type="text" placeholder="Enter Name Of Workout"  id="input" [(ngModel)]="workoutName" name = "workoutNameInput"></ion-input>
+      </ion-item>
+      <div text-center>
+          <ion-item text-center class="item-content"><h4>Day Of Week</h4></ion-item> 
+
+      <ion-item id="addWorkout-select2" (click)="selectDay()">
+
+        <ion-label text-center>
+          {{dayOfWeek}}
+          <ion-icon name="arrow-down" *ngIf = 'dayOfWeek == "Please Select"'></ion-icon>
+        </ion-label>
+         
+      </ion-item>
+    </div>
+
+    </form>
+    <br>    <br>
+
+
+    <form id="addWorkout-form9">
+      <div></div>
+      <h3 id="addWorkout-heading11" style="color:#000000;text-align:center;">
+        Exercises
+      </h3>
+      <div *ngIf = "exerciseCount != 0">
+          <ion-item color="none" id="addWorkout-list-item32" *ngFor = "let item of newExerciseList"> 
+              <ion-avatar item-left>
+                <img height="150" width="150" src="../assets/exercise/{{item.path}}"/>
+              </ion-avatar>
+              <h2>
+                {{item.name}}
+              </h2>
+              <h2>
+                  {{item.id}}
+                </h2>
+            </ion-item>
+      </div>
+
+
+      <ion-item color="none"  *ngIf = "exerciseCount == 0" id="addWorkout-list-item32">
+          <ion-avatar item-left>
+            <img />
+          </ion-avatar>
+          <h2>
+            Press + to add exercise
+          </h2>
+        </ion-item>
+
+      <button id="addWorkout-button10" ion-button color="positive" block on-click="goToWorkoutPlanner()">
+          Submit
+        </button>
+ 
+      <button id="addWorkout-button10" ion-button clear color="positive" block on-click="goToWorkoutPlannerCancel()">
+        Cancel
+      </button>
+    </form>
+  </ion-content>

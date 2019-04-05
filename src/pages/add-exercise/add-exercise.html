@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Add Exercise
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page12">
+  <form id="addExercise-form11">
+    <ion-item id="addExercise-input20">
+      <ion-label text-center on-click="goToChooseExercise()"><h2>{{name}}</h2><ion-icon name="arrow-down" *ngIf = 'name == "Please Select Workout"'></ion-icon>
+      </ion-label>
+      
+    </ion-item>
+  </form>
+  <form id="addExercise-form12">
+    <ion-item id="addExercise-input22">
+      <ion-label></ion-label>
+      <ion-input type="text" placeholder="Weight" [(ngModel)]="weight" name = "inputWeight"></ion-input> 
+    </ion-item>
+    <ion-item id="addExercise-input23">
+        <ion-label></ion-label>
+        <ion-input type="text" placeholder="Sets" [(ngModel)]="sets" name = "inputReps"></ion-input>
+      </ion-item>
+    <ion-item id="addExercise-input23">
+      <ion-label></ion-label>
+      <ion-input type="text" placeholder="Repetitions" [(ngModel)]="reps" name = "inputReps"></ion-input>
+    </ion-item>
+    <ion-item id="addExercise-select7" on-click="restTime()">
+      <ion-label>
+        Rest Time
+      </ion-label>
+      <ion-label class = "alignme">
+          {{selection}} 
+        </ion-label>
+    </ion-item>
+
+  </form>
+  <form id="addExercise-form13">
+  </form>
+  <br>
+  <button id="addWorkout-button10" ion-button color="positive" block on-click="goToAddWorkout()">
+      Submit
+    </button>
+  <button id="addWorkout-button10" ion-button clear color="positive" block on-click="goToAddWorkoutCancel()">
+      Cancel
+  </button>
+</ion-content>

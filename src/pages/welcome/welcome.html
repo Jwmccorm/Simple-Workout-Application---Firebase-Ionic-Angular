@@ -1,0 +1,214 @@
+<ion-header>
+  <ion-navbar>
+
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+        Workout Activate 
+      
+    </ion-title>
+  </ion-navbar> 
+</ion-header>
+
+
+
+<ion-content padding id="page7">
+  <!-- Display this if no workouts exist-->
+  <div *ngIf="loader">
+    <ion-card id="welcome-card" *ngIf="emptyWorkout">
+      <ion-list>
+        <div></div>
+        <h1 style="color:#000000;text-align:center;">
+          No Workouts
+        </h1>
+
+        <ion-item color="none" id="welcome-list-item16">
+          <div text-center> <button ion-button size="large" on-click="goToWorkoutPlanner()">Start Your Health Life
+              Now</button></div>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+
+ <!--Display this if we have workouts to show -->
+    <div *ngIf="welcome">
+      <div *ngIf="!emptyWorkout">
+          <img src="../assets/Banners/welcomeback.png">
+
+        <ion-card id="welcome-card21">
+          <ion-list>
+              <br>
+
+              <h1 id="welcome-heading6" style="color:#000000;text-align:center;">
+                  Today's Workout
+                </h1>
+            <br>
+
+            <ion-item color="none" id="welcome-list-item16" *ngFor="let item of todayWorkouts ">
+              <ion-avatar item-left>
+                <img src="assets/img/GJLhABG6QaehHtd3kSyg_logoNBG.png" />
+              </ion-avatar>
+              <ion-col>
+                <ion-row>
+                  <ion-col>
+                    <h1>
+                      {{item.name}}
+                    </h1>
+                  </ion-col>
+
+                </ion-row>
+                <ion-row>
+                  <ion-col col-5>
+                    <h2>
+                      {{item.day}}
+                    </h2>
+                  </ion-col>
+                  <ion-col col-7>
+                    <button small ion-button on-click="goToStartWorkout(item)">
+                      Start Workout
+                    </button>
+                  </ion-col>
+
+                </ion-row>
+              </ion-col>
+
+
+
+            </ion-item>
+          </ion-list>
+        </ion-card>
+
+
+        <!--This is the list of workouts-->
+        <ion-card id="welcome-card22">
+          <ion-list>
+            <h1 id="welcome-heading6" style="color:#000000;text-align:center;">
+              Upcoming Workouts
+            </h1>
+            <br>
+            <ion-item color="none" id="welcome-list-item18" *ngFor="let item of upComingWorkouts">
+              <ion-avatar item-left>
+                <img src="assets/img/GJLhABG6QaehHtd3kSyg_logoNBG.png" />
+              </ion-avatar>
+              <h1>
+                {{item[1].name}}
+              </h1>
+              <h3>
+                {{item[1].day}}
+              </h3>
+            </ion-item>
+
+          </ion-list>
+        </ion-card>
+        <button id="addWorkout-button10" ion-button clear color="positive" block on-click="goToWorkoutPlanner()">
+          Go To Workout Planner
+        </button>
+      </div>
+
+    </div>
+  <!--  Display this if the user has selected to start the workout -->
+    <div *ngIf="started">
+          <ion-card id="welcome-card21">
+            <ion-list>
+              <div></div>
+              <h1 id="welcome-heading6" style="color:#000000;text-align:center;">
+                Today's Workout
+              </h1>
+              <br>
+  
+              <ion-item color="none" id="welcome-list-item16" *ngFor="let item of     startedWorkout.exercises ">
+                  <ion-row>
+                    <ion-col>
+                        <img src="../assets/exercise/{{item.path}}" />
+                    </ion-col>
+                    <ion-col>
+                      <h1>
+                        {{item.name}}
+                      </h1>
+                      <h2 text-center>
+                          Weight : {{item.weight}}
+                        </h2>
+                        <h2 text-center>
+                          Sets : {{item.sets}}
+                        </h2>
+                        <h2 text-center>
+                            Rest : {{item.rest}}
+                        </h2>
+                    </ion-col>
+  
+                  </ion-row>
+                  <ion-row>
+                    <ion-col>
+                      <button ion-button color="light" full on-click ="startRestTimer(item.rest)">
+                        Start Rest Timer
+                      </button>
+                    </ion-col>
+                  </ion-row>
+  
+  
+  
+              </ion-item>
+            </ion-list>
+          </ion-card>
+  
+
+          <br>
+          <br>
+          <button id="addWorkout-button10" ion-button color="positive" block on-click="finishWorkout()">
+            Finish Workout
+          </button>
+          <button id="addWorkout-button10" ion-button clear color="positive" block on-click="cancelWorkoutStart()">
+            Cancel Workout
+          </button>
+      </div>
+
+      <!--Display this if the user has completed the workout-->
+      <div *ngIf="completed">
+        <ion-card id="welcome-card21">
+          <ion-list>
+            <div></div>
+            <ion-item>
+                <h1 id="welcome-heading6" style="color:#000000;text-align:center;">
+                    Change Workout
+                  </h1>
+            </ion-item>
+
+            <br>
+
+            <ion-item color="none" id="welcome-list-item16" *ngFor="let item of     startedWorkout.exercises ">
+                <h1 text-center>{{item.name}}</h1>
+                <ion-grid>
+                  <ion-row text-center>
+                    <ion-col>
+                        <h2>Weight:</h2>
+                        <ion-item><ion-input type="text" [(ngModel)]="item.weight" placeholder="Weight"></ion-input> </ion-item>
+                    </ion-col>
+                    <ion-col>
+                        <h2>Sets:</h2>
+                        <ion-item><ion-input type="text" [(ngModel)]="item.sets" placeholder="Weight"></ion-input> </ion-item>
+                    </ion-col>
+                    <ion-col>
+                        <h2>Rest:</h2>
+                        <ion-item><ion-input type="text" [(ngModel)]="item.rest" placeholder="Weight"></ion-input> </ion-item>
+                    </ion-col>
+                  </ion-row>
+
+                </ion-grid>
+
+
+
+            </ion-item>
+          </ion-list>
+        </ion-card>
+
+
+        <br>
+        <br>
+        <button full ion-button on-click="submitWorkout()"> 
+          Submit
+        </button>
+    </div>
+
+  </div>
+
+</ion-content>

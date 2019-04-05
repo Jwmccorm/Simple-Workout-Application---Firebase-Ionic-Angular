@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Choose Exercise
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page15">
+  <ion-list id="chooseExercise-list9">
+      <ion-grid>
+
+<!--Choose the exercise from a list from the DB-->    
+        <ion-row *ngFor = "let item of cer.list" on-click="chosen(item)">
+          <ion-col class="center">
+              <h5 text-center text-wrap>
+                  {{item.name}}
+                </h5>
+          </ion-col>
+          <ion-col>
+              <img height="150" width="150" src="../assets/exercise/{{item.path}}"/>
+
+          </ion-col>
+
+        </ion-row>
+    
+  
+  </ion-grid> 
+
+  </ion-list>
+</ion-content>  

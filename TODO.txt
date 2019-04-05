@@ -1,0 +1,9 @@
+--TODO--
+
+User user ID for all of the DB calls, not blank
+View workout screen (Order exercises in whatever order you want to do them in.)
+Statistics on weight lifting
+Setting to alter the pounds of kilos
+Image storage for progress pictures 
+Start workout
+

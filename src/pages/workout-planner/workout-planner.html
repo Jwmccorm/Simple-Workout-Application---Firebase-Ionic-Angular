@@ -1,0 +1,92 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Workout Planner
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page9">
+  <div *ngIf="loadTimer">
+    <div *ngIf="mainView">
+        <img src="../assets/Banners/workoutplanner.png">
+
+      <div *ngIf="!emptyWorkout">
+        <ion-card id="workoutPlanner-card23" *ngFor="let item of upComingWorkouts">
+          <br>
+          <ion-list>
+            <a class="icon-circle">
+              <i class="ion-star"></i>
+            </a>
+            <h2 id="workoutPlanner-heading10" style="color:#000000;text-align:center;">
+              {{item[1].name}}
+            </h2>
+            <h4 id="workoutPlanner-heading15" style="color:#000000;text-align:center;">
+              {{item[1].day}}
+            </h4>
+            <form id="workoutPlanner-form6">
+            </form>
+          </ion-list>
+          <button id="workoutPlanner-button9" ion-button small outline color="positive"
+            on-click="deleteWorkout(item[1])">
+            Delete Workout 
+          </button>
+          <button id="workoutPlanner-button9" ion-button small outline color="positive" on-click="viewWorkout(item[1])">
+            View Workout Information
+          </button>
+        </ion-card>
+      </div>
+
+
+    <button id="workoutPlanner-button8" ion-button color="positive" block on-click="goToAddWorkout()">
+      Add Workout
+    </button>
+  </div>
+  <div *ngIf="workoutView">
+    <ion-item>
+        <h1 text-center>{{itemView.name}}</h1>
+        <h1 text-center>{{itemView.day}}</h1>
+    </ion-item>
+
+
+      <ion-card id="workoutPlanner-card23" *ngFor="let ex of itemView.exercises">
+
+          <ion-card-header>
+          <h1 text-center>{{ex.name}}</h1>
+          <br>
+          <img src="../assets/exercise/{{ex.path}}" />
+
+        </ion-card-header>
+
+
+        <ion-card-content>
+            <h2>Repetitions: {{ex.repetitions}}</h2>
+ 
+          </ion-card-content>
+
+          <ion-card-content>
+              <h2>Weight: {{ex.weight}}</h2>
+  
+            </ion-card-content>
+
+            <ion-card-content>
+                <h2>Rest: {{ex.rest}}</h2>
+    
+              </ion-card-content>
+
+              <ion-card-content>
+                  <h2>Sets: {{ex.sets}}</h2>
+      
+                </ion-card-content>
+  
+
+        </ion-card>
+
+        <button id="workoutPlanner-button9" ion-button fill outline color="positive" on-click="returnView()">Return</button>
+
+  </div>
+
+  </div>
+</ion-content>

@@ -1,0 +1,1 @@
+this.nav.setRoot(SomePage);

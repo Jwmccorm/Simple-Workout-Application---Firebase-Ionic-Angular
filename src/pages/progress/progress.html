@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+        Workout Activate 
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page13">
+  <img src="../assets/Banners/progress.png">
+
+
+<!--Loop through all the exercises we have completed and display weights-->
+  <google-chart *ngFor = "let item of gStats"class="center" #chart
+   [title]="item.title"
+   [type]="item.type" 
+   [data]="item.data"   
+   [options]="item.options"
+>
+</google-chart> 
+</ion-content> 
